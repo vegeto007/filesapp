@@ -1,0 +1,4 @@
+Enclose a Chinese string longer than 76 Chinese characters by {% trans "" %}, e.g., "四千年前有一个姑娘叫姜嫄，她有一天觉得很空虚，就到郊外玩，看见一只巨人脚印，也许是外星人留下的，她想上去比一比，看看谁的脚丫子更大，就踩上去。踩上去就发现肚子里乱动，跟怀了孕似的。回去以后，肚子里的小孩，又老不出来，过了十二个月才生下来。"
+Run django-admin.py makemessages -l en -e htm
+You will see an error. I don't remember the exact error message, but basically it means "a string ends unexpectedly", probably because the code doesn't handle multi-byte characters correctly and truncates it at the middle of a Chinese character. A same length English string works fine.
+Because of it, we have to write our program in English, and then provide the Chinese version, using Django's internationalization tools.
